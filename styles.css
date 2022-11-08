@@ -1,0 +1,339 @@
+
+:root {
+    --white : linear-gradient(
+        to right bottom,
+        rgba(255,255,255,.6),
+        rgba(255,255,255,.2)
+        );
+    --box_shadow : 2px 2px 5px 0px rgba(0,0,0,.7);
+    --text_shadow :  1px 1px rgba(255,20,147,.5);
+}
+    
+@font-face {
+    font-family: "Italianno";
+    src: url("Fonts/Italianno-Regular.ttf");
+} 
+    
+@font-face{
+    font-family: "Open_Sans";
+    src: url("Fonts/OpenSans-Regular.ttf");
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-attachment: fixed;
+    background-image:url(graficzki/dog.jpg),url(graficzki/cat.jpg);
+    background-repeat:no-repeat,repeat-x;
+    background-size:50% 100%;
+    font-size:1em;
+}
+
+@media (max-width:500px) {
+    body {
+        font-size:0.7em;
+    }
+
+}
+
+/* --- --- --- --- --- --- NAVS --- --- --- --- --- ---*/
+nav {
+    position: sticky;
+    top:0;
+    display: flex;
+    flex-wrap:wrap; 
+    justify-content: center;
+    align-items: center; 
+    border-top: 1px solid deeppink;  
+    border-bottom: 1px solid deeppink;
+    border-radius: 10px;
+    margin-bottom: 10%;
+    z-index:5;
+    backdrop-filter:blur(5px);
+    box-shadow: var(--box_shadow);
+    animation:slideInFromTop 250ms ease-in-out;
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    80% {
+        transform: translateY(30%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.nav-logo {
+    font-family:"Italianno";
+    font-size:3.5em;
+    font-weight: bold;
+    margin:10px;
+    padding-left:10px;     
+}
+.nav-logo > p {
+    text-shadow:var(--text_shadow);
+    margin: 0;
+}
+
+.nav-logo>span {
+    color:deeppink;
+}
+
+.nav-buttons {
+    display:flex;
+    flex-direction: row;
+    padding:10px;
+    flex-wrap:wrap;  
+}
+
+.nav-buttons > a {
+    width:6vw;
+    min-width:25px;
+    max-width:60px;
+    margin:3px;
+    padding:3px;
+    box-sizing: border-box;
+    border-radius:40%;
+    box-shadow: var(--box_shadow);
+    background-color:transparent;
+    transition:  scale 200ms;
+}
+
+.nav-buttons a:hover,.nav-buttons a:focus {
+    
+    /* background-color:var(--white); */
+    outline:none;
+    border:1px solid deeppink;
+}
+.nav-buttons a:active {
+    transform:scale(0.8);
+}
+
+/* --- --- --- --- --- --- SECTIONS AND HEADERS --- --- --- --- --- ---*/
+
+
+h1,h4 {
+    font-family:"Italianno";
+    text-align: center; 
+}
+
+h1 {
+    font-size:3em;
+}
+
+section {
+    position:relative;
+    display:flex;
+    max-width: 60%;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Open_Sans";
+    background:var(--white);
+    border-top: 1px solid deeppink;
+    border-bottom: 1px solid deeppink;
+    border-radius: 10px;
+    padding:20px 50px;
+    box-shadow: var(--box_shadow);
+    margin-bottom: 15vh;
+}
+
+/* --- --- --- --- --- --- GALLERY --- --- --- --- --- ---*/
+
+.galeria {
+    position:relative;
+    display:grid;
+    justify-content: center;
+    grid-gap:10px;
+    grid-template-columns: 10% 45% 45% 10%;
+    grid-template-rows: 20% 70%;
+    padding:0px 20px;
+}
+
+/* .slider {
+    position:fixed;
+    max-width: 600px;
+    left:50%;
+    top:1000%;
+    transform:translateX(-50%);
+    z-index:1;
+} */
+
+.galeria > h4 {
+    font-family:"Italianno";
+    font-size:2em;
+    margin:10px;
+}
+
+.galeria img {
+    position:relative;
+    width: 100%;
+    height: 100%;
+}
+
+.pies-1 , 
+.pies-2 {
+    border:1px solid black;
+    cursor: pointer;
+    margin:0px;
+    padding:0px;
+    z-index:3;
+     
+}
+
+.galeria-back, 
+.galeria-forward  {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    left:0px;
+    z-index:2;
+}
+
+.btn-galeria-back, 
+.btn-galeria-forward {
+    padding:0;
+    margin:0;
+    background:transparent;
+    border:none;
+}
+
+.btn-galeria-back:focus, 
+.btn-galeria-forward:focus {
+    outline: none;
+    background:rgba(255,255,255,.3);
+}
+
+.btn-galeria-back > img, 
+.btn-galeria-forward > img {
+    cursor:pointer;
+    filter:none;
+}
+.galeria-back img {
+    transform:rotate(180deg); 
+}
+
+.darkBackGround {
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    z-index:1;
+    display:none;
+    justify-content: center;
+    align-items: center;  
+}
+
+.hidden {
+    display:none;
+}
+
+
+/* --- --- --- --- --- --- PRICE - LIST --- --- --- --- --- ---*/
+
+.cennik {
+    flex-direction: column;
+    font-weight:600;
+    overflow-wrap: break-word;
+}
+
+.cennik > h4 {
+    margin-top: 50px;
+    font-family:"Open_Sans";
+    font-size: 120%;
+    margin-bottom:5px;
+}
+
+.cennik p {
+    text-align: center;
+    font-size:90%;
+}
+
+.cennik li {
+    align-items: left;
+    margin-left:-15px;
+}
+.cennik li::marker {
+    color:deeppink;
+}
+.pink-span {
+    color:deeppink;
+}
+.service-price {
+    float:right;
+    margin-right: 15px;
+}
+
+.table-cats {
+    width:100%;
+    display:grid; 
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows: 1fr;
+    grid-gap:1px;
+    
+
+}
+.table-cats > div {
+    display:grid;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid black;
+}
+/* --- --- --- --- --- --- CONTACT --- --- --- --- --- ---*/
+.kontakt {
+    width:30%;
+    padding: 10px 100px 10px 100px;
+    max-width: 200px;
+    font-weight:700;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.kontakt > div {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    min-width:200px;
+    min-height:200px;
+}
+.kontakt p {
+    display:flex; 
+    align-items: center;
+}
+
+.kontakt a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;  
+}
+.phone-img {      
+    height:34px;
+    width:34px;
+}
+
+.facebook-img {
+    width:40px;
+    height:40px;
+}
+
+.map {
+    min-width:200px;
+    min-height:200px;
+    background-image: url(graficzki/mapa.jpg);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid black;
+}
+
